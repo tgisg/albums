@@ -1,16 +1,23 @@
+/* eslint max-len: "off" */
 // Index.ios.js place code in here for IOS!!!
 
 // Import a library to help create a component
 import React from 'react';
-import ReactNative from 'react-native';
+import { AppRegistry, View } from 'react-native';
+// when you make your own module you have to give relative path
+// we might have modules named the same thing, packager needs to know which is which
+import Header from './src/components/Header';
+import AlbumList from './src/components/AlbumList';
 
 // Create a component
-const App = () => {
-  return (
-    <Text>Some Content</Text>
+const App = () => (
+  // below is a self closing component, you are not adding text to your header component
+  <View>
+    <Header headerText={'Albums'} />
+    <AlbumList />
+  </View>
   );
-};
 
 // Render it to the device
 // not having curly braces is implicit return of App without having to use return()
-ReactNative.AppRegistry.registerComponent('albums', () => App);
+AppRegistry.registerComponent('albums', () => App);
