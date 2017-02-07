@@ -12,7 +12,7 @@ import AlbumList from './src/components/AlbumList';
 // Create a component
 const App = () => (
   // below is a self closing component, you are not adding text to your header component
-  <View>
+  <View style={{ flex: 1 }}>
     <Header headerText={'Albums'} />
     <AlbumList />
   </View>
