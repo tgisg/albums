@@ -5,7 +5,12 @@ import {StyleSheet,
         Text,
         View
         } from 'react-native';
-import FBSDK, { LoginButton } from 'react-native-fbsdk';
+const FBSDK = require('react-native-fbsdk');
+const {
+  LoginButton,
+  AccessToken
+} = FBSDK;
+// import FBSDK, { LoginButton, AccessToken } from 'react-native-fbsdk';
 
 // const onLoginFinished = (error, result) => {
 //   if (error) {
@@ -30,7 +35,11 @@ class SignIn extends Component {
               } else if (result.isCancelled) {
                 alert("Login was cancelled");
               } else {
-                alert("Login was successful with permissions: " + result.grantedPermissions)
+                AccessToken.getCurrentAccessToken().then(
+                  (data) => {
+                    alert("Login was successful with permissions: " + result.grantedPermissions + " " + "Your access token is: " + data.accessToken.toString())
+                  }
+                )
               }
             }
           }

@@ -1,7 +1,7 @@
 /* eslint-disable*/
 // cant destructure out component library and get rid of react because when babel turns jsx into javascript it is turning jsx into react.createElement calls
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
 import SignIn from './SignIn';
@@ -29,9 +29,11 @@ class AlbumList extends Component {
   }
   render() {
     console.log(this.state);
+    console.log(this.props);
 
     if (this.props.user) {
-      return <SignOut />
+      return
+        <SignOut />
     }
     return <SignIn />;
 

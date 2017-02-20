@@ -10,7 +10,7 @@ class SignOut extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Sign Out View</Text>
+        <Text></Text>
       </View>
     );
   }
