@@ -21,18 +21,37 @@ import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
 
-  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-    @Override
-    public boolean getUseDeveloperSupport() {
-      return BuildConfig.DEBUG;
+  private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
+
+    protected static CallbackManager getCallbackManager() {
+      return mCallbackManager;
     }
 
+  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+
     @Override
-    protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
-      );
-    }
+   protected boolean getUseDeveloperSupport() {
+     return BuildConfig.DEBUG;
+   }
+
+   @Override
+   protected List<ReactPackage> getPackages() {
+     return Arrays.<ReactPackage>asList(
+         new MainReactPackage(),
+         new FBSDKPackage(mCallbackManager)
+     );
+   }
+    // @Override
+    // public boolean getUseDeveloperSupport() {
+    //   return BuildConfig.DEBUG;
+    // }
+
+    // @Override
+    // protected List<ReactPackage> getPackages() {
+    //   return Arrays.<ReactPackage>asList(
+    //       new MainReactPackage()
+    //   );
+    // }
   };
 
   @Override
@@ -41,8 +60,16 @@ public class MainApplication extends Application implements ReactApplication {
   }
 
   @Override
-  public void onCreate() {
-    super.onCreate();
-    SoLoader.init(this, /* native exopackage */ false);
-  }
+public void onCreate() {
+  super.onCreate();
+  FacebookSdk.sdkInitialize(getApplicationContext());
+  // If you want to use AppEventsLogger to log events.
+  AppEventsLogger.activateApp(this);
+}
+
+  // @Override
+  // public void onCreate() {
+  //   super.onCreate();
+  //   SoLoader.init(this, /* native exopackage */ false);
+  // }
 }
