@@ -7,15 +7,15 @@ import {StyleSheet,
         } from 'react-native';
 import FBSDK, { LoginButton } from 'react-native-fbsdk';
 
-const onLoginFinished = (error, result) => {
-  if (error) {
-    alert("login has error: " + result.error);
-  } else if (result.isCancelled) {
-    alert("login is cancelled.");
-  } else {
-    alert("login has finished with permissions: " + result.grantedPermissions)
-  }
-};
+// const onLoginFinished = (error, result) => {
+//   if (error) {
+//     alert("login has error: " + result.error);
+//   } else if (result.isCancelled) {
+//     alert("login is cancelled.");
+//   } else {
+//     alert("login has finished with permissions: " + result.grantedPermissions)
+//   }
+// };
 
 class SignIn extends Component {
   render() {
