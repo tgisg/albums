@@ -27,7 +27,7 @@ class SignIn extends Component {
     return (
       <View style={styles.container}>
         <LoginButton
-          publishPermissions={["publish_actions"]}
+          publishPermissions={["public_profile"]}
           onLoginFinished={
             (error, result) => {
               if (error) {
