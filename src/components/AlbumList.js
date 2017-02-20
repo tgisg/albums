@@ -1,9 +1,12 @@
-/* eslint max-len: "off" */
+/* eslint-disable*/
 // cant destructure out component library and get rid of react because when babel turns jsx into javascript it is turning jsx into react.createElement calls
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
+import SignIn from './SignIn';
+import SignOut from './SignOut';
+
 
 class AlbumList extends Component {
   // the state = {} is identical to saying getInitialState. can do state = something because this is initializing, but wouldn't do this.state = something ever
@@ -27,11 +30,18 @@ class AlbumList extends Component {
   render() {
     console.log(this.state);
 
-    return (
-      <ScrollView>
-        {this.renderAlbums()}
-      </ScrollView>
-    );
+    if (this.props.user) {
+      return <SignOut />
+    }
+    return <SignIn />;
+
+
+
+    // return (
+    //   <ScrollView>
+    //     {this.renderAlbums()}
+    //   </ScrollView>
+    // );
   }
 }
 
